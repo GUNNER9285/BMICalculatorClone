@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 //                dialog.show();
 
                 Intent intent = new Intent(MainActivity.this, BmiResultActivity.class); // context, destinations
-                intent.putExtra("bmi",bmi);
                 intent.putExtra("result",result);
                 startActivity(intent); // fire intent
             }
