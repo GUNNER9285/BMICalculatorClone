@@ -64,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
         else if(bmi < 25){
             text = "น้ำหนักปกติ";
         }
-        else if(bmi < 30){
-            text = "น้ำหนักมากกว่าปกติ";
+        else if(bmi < 0){
+            text = "น้ำหนักมากกว่าปกติ (ท้วม)";
         }
         else {
-            text = "น้ำหนักมากกว่าปกติมาก";
+            text = "น้ำหนักมากกว่าปกติมาก (อ้วน)";
         }
         return text;
     }
