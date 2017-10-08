@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.bmicalculator.model.Person;
+
 import static com.example.bmicalculator.R.drawable.bmi;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Double height = Double.valueOf(editHeight.getText().toString()); // getText() return CharSequence
                 Double weight = Double.valueOf(editWeight.getText().toString()); // getText() return CharSequence
-                Double bmi = weight/Math.pow(height/100, 2);
+
+                Person p = new Person(height, weight);
+
+                Double bmi = p.getBmiValue();
+                String bmiText = p.getBmiText();
 
                 String bmiRound = String.format("%.2f",bmi);
-                String bmiText = getBmiText(bmi);
+
                 String result = "ค่า BMI ที่ได้คือ : "+ bmiRound + "\n" + "อยู่ในเกณฑ์ : " + bmiText;
 //
 //                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
@@ -55,21 +61,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent); // fire intent
             }
         });
-    }
-    public String getBmiText(double bmi){
-        String text = "";
-        if (bmi < 18.5){
-            text = "น้ำหนักน้อยกว่าปกติ";
-        }
-        else if(bmi < 25){
-            text = "น้ำหนักปกติ";
-        }
-        else if(bmi < 0){
-            text = "น้ำหนักมากกว่าปกติ (ท้วม)";
-        }
-        else {
-            text = "น้ำหนักมากกว่าปกติมาก (อ้วน)";
-        }
-        return text;
     }
 }
